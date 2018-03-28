@@ -1,67 +1,147 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context="com.example.venom.androidbtsimplerobottest.MainActivity">
+    android:layout_width="match_parent" android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <ImageButton
+        android:id="@+id/stopButton"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_below="@+id/forawrdButton"
+        android:layout_centerHorizontal="true"
+        android:adjustViewBounds="false"
+        android:onClick="Stop"
+        android:scaleType="fitCenter"
+        app:srcCompat="@drawable/stop" />
+
+    <ImageButton
+        android:id="@+id/forawrdButton"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="145dp"
+        android:adjustViewBounds="false"
+        android:cropToPadding="false"
+        android:onClick="Forward"
+        android:scaleType="fitCenter"
+        app:srcCompat="@drawable/uparrow" />
+
+    <ImageButton
+        android:id="@+id/rightButton"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_alignTop="@+id/stopButton"
+        android:layout_toEndOf="@+id/stopButton"
+        android:onClick="Right"
+        android:scaleType="fitCenter"
+        app:srcCompat="@drawable/rightarrow"
+        android:layout_toRightOf="@+id/stopButton" />
+
+    <ImageButton
+        android:id="@+id/reverseButton"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_below="@+id/stopButton"
+        android:layout_centerHorizontal="true"
+        android:onClick="Reverse"
+        android:scaleType="fitCenter"
+        app:srcCompat="@drawable/downarrow" />
+
+    <ImageButton
+        android:id="@+id/leftButton"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_alignTop="@+id/stopButton"
+        android:layout_toStartOf="@+id/stopButton"
+        android:onClick="Left"
+        android:scaleType="fitCenter"
+        app:srcCompat="@drawable/leftarrow"
+        android:layout_toLeftOf="@+id/stopButton" />
+
+    <EditText
+        android:id="@+id/editText"
+        android:layout_width="296dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="Bluetooth Connection Name" />
+
+    <Button
+        android:id="@+id/findBTButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:text="Find" />
 
     <TextView
-        android:id="@+id/sample_text"
+        android:id="@+id/RCTextView"
+        android:layout_width="125dp"
+        android:layout_height="33dp"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/editText"
+        android:layout_marginRight="52dp"
+        android:gravity="center_vertical|center_horizontal"
+        android:textSize="24sp"
+        tools:text="RC Mode"/>
+
+    <TextView
+        android:id="@+id/lineTextView"
+        android:layout_width="125dp"
+        android:layout_height="33dp"
+        android:layout_below="@+id/editText"
+        android:layout_centerHorizontal="true"
+        android:gravity="center_vertical|center_horizontal"
+        android:textSize="24sp"
+        tools:text="Line Follow"/>
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="125dp"
+        android:layout_height="33dp"
+        android:layout_alignParentEnd="true"
+        android:layout_below="@+id/editText"
+        android:gravity="center_vertical|center_horizontal"
+        android:textSize="24sp"
+        tools:text="Obstacle" />
+
+    <ToggleButton
+        android:id="@+id/RCToogleButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/RCTextView"
+        android:layout_marginStart="18dp"
+        android:checked="true"
+        android:onClick="HandleToggleButtonPress"
+        android:text="ToggleButton" />
 
-    <ImageButton
-        android:id="@+id/imageButton"
+    <ToggleButton
+        android:id="@+id/lineToogleButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:srcCompat="@android:drawable/stat_sys_data_bluetooth"
-        tools:layout_editor_absoluteX="284dp"
-        tools:layout_editor_absoluteY="52dp"
-        tools:ignore="MissingConstraints" />
+        android:layout_below="@+id/RCTextView"
+        android:layout_centerHorizontal="true"
+        android:checked="false"
+        android:onClick="HandleToggleButtonPress"
+        android:text="ToggleButton" />
 
-    <ImageButton
-        android:id="@+id/imageButton2"
-        android:layout_width="77dp"
-        android:layout_height="73dp"
-        app:srcCompat="@drawable/downarrow"
-        tools:layout_editor_absoluteX="154dp"
-        tools:layout_editor_absoluteY="266dp"
-        tools:ignore="MissingConstraints" />
+    <ToggleButton
+        android:id="@+id/obstacleToggleButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_below="@+id/RCTextView"
+        android:layout_marginEnd="19dp"
+        android:checked="false"
+        android:onClick="HandleToggleButtonPress"
+        android:text="ToggleButton" />
 
-    <ImageButton
-        android:id="@+id/imageButton3"
-        android:layout_width="56dp"
-        android:layout_height="51dp"
-        android:background="@color/colorAccent"
-        app:srcCompat="@drawable/uparrow"
-        tools:layout_editor_absoluteX="245dp"
-        tools:layout_editor_absoluteY="215dp"
-        tools:ignore="MissingConstraints" />
-
-    <ImageButton
-        android:id="@+id/imageButton4"
-        android:layout_width="56dp"
-        android:layout_height="51dp"
-        android:background="@color/colorAccent"
-        app:srcCompat="@drawable/uparrow"
-        tools:layout_editor_absoluteX="70dp"
-        tools:layout_editor_absoluteY="215dp"
-        tools:ignore="MissingConstraints" />
-
-    <ImageButton
-        android:id="@+id/imageButton5"
-        android:layout_width="56dp"
-        android:layout_height="51dp"
-        android:background="@color/colorAccent"
-        app:srcCompat="@drawable/uparrow"
-        tools:layout_editor_absoluteX="164dp"
-        tools:layout_editor_absoluteY="164dp"
-        tools:ignore="MissingConstraints" />
-
-</android.support.constraint.ConstraintLayout>
+</RelativeLayout>
